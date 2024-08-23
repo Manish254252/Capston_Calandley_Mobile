@@ -40,4 +40,12 @@ public class HomePage extends BasePage {
     public void clickOnNotePadOption() {
         notePadOption.click();
     }
+
+    public void clickMoreButton() {
+        moreBtn.click();
+    }
+
+    public void clickOnNotePadOption() {
+        notePadOption.click();
+    }
 }
