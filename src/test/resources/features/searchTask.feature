@@ -1,10 +1,10 @@
 Feature: search a task
 
   Background:
-    Given user enters email
-    When  user enters password
+    Given user enters email {string}
+    When  user enters password {string}
     Then user clicks on login btn
-    And verify use logged in
+    And verify user logged in
 
   Scenario: search a task
     Given user is on home page
