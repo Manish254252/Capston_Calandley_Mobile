@@ -1,6 +1,8 @@
 package com.automation.steps;
 
 import com.automation.pages.LoginPage;
+import com.automation.utils.ConfigReader;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,19 +11,19 @@ import org.junit.Assert;
 public class LoginSteps {
     
     LoginPage loginPage = new LoginPage();
-    
-    @Given("user enters email")
-    public void user_enters_email() {
-       loginPage.clickOnGettingStarted();
-       loginPage.enterEmail("mongo.mk.solanki@gmail.com");
-       loginPage.clickOnNextBtn();
+
+    @Given("user enters email {string}")
+    public void userEntersEmail(String email) {
+        loginPage.clickOnGettingStarted();
+        loginPage.enterEmail(ConfigReader.getConfigValue(email));
+        loginPage.clickOnNextBtn();
     }
 
-    @When("user enters password")
-    public void user_enters_password() {
+    @When("user enters password {string}")
+    public void user_enters_password(String password) {
         loginPage.clickOnSignInOptions();
         loginPage.clickOnSignInWithPassword();
-        loginPage.enterPassword("Manish@1234");
+        loginPage.enterPassword(ConfigReader.getConfigValue(password));
        
     }
 
@@ -32,8 +34,8 @@ public class LoginSteps {
        loginPage.clickOnAllowNotification();
     }
 
-    @Then("verify use logged in")
-    public void verify_use_logged_in() {
+    @Then("verify user logged in")
+    public void verify_user_logged_in() {
         Assert.assertTrue(loginPage.isAddIconDisplayed());
     }
 

@@ -14,9 +14,9 @@ public class Hooks {
         DriverManager.createDriver();
     }
 
-    @After
-    public void cleanUp(Scenario scenario) {
-        DriverManager.getDriver().quit();
-    }
+//    @After
+//    public void cleanUp(Scenario scenario) {
+//        DriverManager.getDriver().quit();
+//    }
 
 }

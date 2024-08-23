@@ -5,6 +5,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage  extends BasePage{
 
+    @FindBy(xpath = "//android.widget.Button[@content-desc='Action']")
+    WebElement addIcon;
 
-
+    public void clickAddButton() {
+        addIcon.click();
+    }
 }
