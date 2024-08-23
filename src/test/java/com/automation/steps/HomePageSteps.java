@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pages.HomePage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -21,6 +22,16 @@ public class HomePageSteps {
     @Then("user adds event")
     public void user_adds_event() {
         
+    }
+
+    @When("user clicks on more button")
+    public void userClicksOnMoreButton() {
+        homePage.clickMoreButton();
+    }
+
+    @And("user clicks on notepad option")
+    public void userClicksOnNotepadOption() {
+        homePage.clickOnNotePadOption();
     }
 
 }
