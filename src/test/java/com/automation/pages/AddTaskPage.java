@@ -40,6 +40,7 @@ public class AddTaskPage extends BasePage {
     WebElement taskCompletedPopUp;
 
     public void enterTaskTitle(String title) {
+        taskTitleInput.click();
         taskTitleInput.sendKeys(title);
     }
 
