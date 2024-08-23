@@ -83,20 +83,22 @@ public class BasePage {
         driver.perform(List.of(tap));
     }
 
+    public boolean isClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        return true;
+    }
+
     public void scrollOrSwipe(int startX, int startY, int endX, int endY) {
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 
-
         Sequence scroll = new Sequence(finger, 1);
-
 
         scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
         scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
         scroll.addAction(new Pause(finger,Duration.ofSeconds(1)));
         scroll.addAction(finger.createPointerMove(Duration.ofSeconds(1), PointerInput.Origin.viewport(), endX, endY));
         scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
 
         driver.perform(Arrays.asList(scroll));
     }

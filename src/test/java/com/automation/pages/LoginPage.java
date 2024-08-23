@@ -41,7 +41,10 @@ public class LoginPage extends BasePage {
     }
 
     public void clickOnNextBtn() {
-        nextBtn.click();
+        if(isClickable(nextBtn)){
+            nextBtn.click();
+        }
+
     }
 
     public void clickOnSignInOptions() {
