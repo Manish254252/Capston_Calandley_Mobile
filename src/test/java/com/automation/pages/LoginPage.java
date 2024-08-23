@@ -77,4 +77,6 @@ public class LoginPage extends BasePage {
     public boolean isAddIconDisplayed() {
         return addIcon.isDisplayed();
     }
+
+
 }

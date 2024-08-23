@@ -2,7 +2,6 @@ package com.automation.utils;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.time.Duration;
@@ -18,6 +17,7 @@ public class DriverManager {
         capabilities.setCapability("app", ConfigReader.getConfigValue("app.path"));
         capabilities.setCapability("appActivity", ConfigReader.getConfigValue("app.activity"));
         capabilities.setCapability("appPackage", ConfigReader.getConfigValue("app.package"));
+        capabilities.setCapability("enforceXPath1", true);
 //        capabilities.setCapability("noReset", true);
         driver = new AndroidDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
