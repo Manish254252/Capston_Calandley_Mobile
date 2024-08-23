@@ -10,7 +10,6 @@ Feature: Add new task functionality
     And user enters assignee
     And user clicks on sets date
     And user sets due date as "due.date"
-    And clicks space for task name
     And user clicks on create button
     Then verify task is created
 

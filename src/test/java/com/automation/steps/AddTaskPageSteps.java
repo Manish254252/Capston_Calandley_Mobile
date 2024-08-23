@@ -42,8 +42,5 @@ public class AddTaskPageSteps {
         Assert.assertTrue(addTaskPage.isTaskCreated());
     }
 
-    @And("clicks space for task name")
-    public void clicksSpaceForTaskName() {
-        addTaskPage.addSpaceInTaskName();
-    }
+
 }
