@@ -12,21 +12,32 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//android.widget.Button[@content-desc=\"Done\"]")
     WebElement doneBtn;
 
+    @FindBy(xpath = "//android.widget.Button[contains(@content-desc,'More')]")
+    WebElement moreBtn;
+
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc='Notepad']")
+    WebElement notePadOption;
+
+
+
     public void clickAddButton() {
         addIcon.click();
     }
 
     public void clickOnWelcomeBanner() {
-        if(isPresent(nextBtn))
-        {
-            while (isPresentWithoutWait(nextBtn))
-            {
+        if (isPresent(nextBtn)) {
+            for (int i = 0; i < 7; i++) {
                 nextBtn.click();
             }
-        }
-        if (isPresentWithoutWait(doneBtn)) {
             doneBtn.click();
         }
+    }
 
+    public void clickMoreButton() {
+        moreBtn.click();
+    }
+
+    public void clickOnNotePadOption() {
+        notePadOption.click();
     }
 }
