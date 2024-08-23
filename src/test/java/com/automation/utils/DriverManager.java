@@ -14,10 +14,10 @@ public class DriverManager {
         capabilities.setCapability("platformName", ConfigReader.getConfigValue("platform.name"));
         capabilities.setCapability("deviceName", ConfigReader.getConfigValue("device.name"));
         capabilities.setCapability("automationName", ConfigReader.getConfigValue("automation.name"));
-        capabilities.setCapability("app", System.getProperty("user.dir")+ConfigReader.getConfigValue("app.path"));
+        capabilities.setCapability("app", ConfigReader.getConfigValue("app.path"));
         capabilities.setCapability("appActivity", ConfigReader.getConfigValue("app.activity"));
         capabilities.setCapability("appPackage", ConfigReader.getConfigValue("app.package"));
-        capabilities.setCapability("enforceXPath1", true);
+//        capabilities.setCapability("enforceXPath1", true);
 //        capabilities.setCapability("noReset", true);
         driver = new AndroidDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
