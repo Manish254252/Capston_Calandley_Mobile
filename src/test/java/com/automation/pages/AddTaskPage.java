@@ -1,7 +1,6 @@
 package com.automation.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -113,6 +112,6 @@ public class AddTaskPage extends BasePage {
 
     public void addSpaceInTaskName() {
         taskTitleInput.click();
-        taskTitleInput.sendKeys(Keys.SPACE);
+        taskTitleInput.sendKeys(" ");
     }
 }
