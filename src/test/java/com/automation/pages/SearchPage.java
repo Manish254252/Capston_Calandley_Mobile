@@ -1,11 +1,12 @@
 package com.automation.pages;
 import com.google.common.collect.ImmutableMap;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SearchPage extends BasePage {
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc='Search\n' +'Tab 4 of 5']")
+    @FindBy(xpath = "//android.widget.Button[contains(@content-desc,'Search')]")
     WebElement searchIcon;
 
     @FindBy(xpath = "//android.widget.EditText")
@@ -23,7 +24,10 @@ public class SearchPage extends BasePage {
 
     public void clickOnSearch()
     {
-        driver.executeScript("mobile: performEditorAction", ImmutableMap.of("action","search"));
+        driver.executeScript("mobile: performEditorAction", ImmutableMap.of("action","done"));
     }
-
+        public boolean isSearchTaskDisplayed()
+    {
+        return driver.findElement(By.xpath(String.format(searchString,"Bengaluru"))).isDisplayed();
+    }
 }

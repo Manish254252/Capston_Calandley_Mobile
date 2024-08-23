@@ -17,11 +17,16 @@ public class HomePage extends BasePage {
     }
 
     public void clickOnWelcomeBanner() {
-        if (isPresent(nextBtn)) {
-            for (int i = 0; i < 7; i++) {
+        if(isPresent(nextBtn))
+        {
+            while (isPresentWithoutWait(nextBtn))
+            {
                 nextBtn.click();
             }
+        }
+        if (isPresentWithoutWait(doneBtn)) {
             doneBtn.click();
         }
+
     }
 }

@@ -2,9 +2,6 @@ package com.automation.pages;
 
 import com.automation.utils.DriverManager;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
@@ -17,9 +14,6 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-import static io.appium.java_client.touch.WaitOptions.waitOptions;
-import static io.appium.java_client.touch.offset.PointOption.point;
-import static java.time.Duration.ofMillis;
 import static java.time.Duration.ofSeconds;
 
 public class BasePage {
