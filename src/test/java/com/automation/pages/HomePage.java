@@ -19,16 +19,13 @@ public class HomePage extends BasePage {
     WebElement notePadOption;
 
 
-
     public void clickAddButton() {
         addIcon.click();
     }
 
     public void clickOnWelcomeBanner() {
-        if(isPresent(nextBtn))
-        {
-            while (isPresentWithoutWait(nextBtn))
-            {
+        if (isPresent(nextBtn)) {
+            while (isPresentWithoutWait(nextBtn)) {
                 nextBtn.click();
             }
         }

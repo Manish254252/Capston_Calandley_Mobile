@@ -15,7 +15,7 @@ public class searchSteps {
 
     @Given("user is on home page")
     public void user_is_on_home_page() {
-    homePage.clickOnWelcomeBanner();
+        homePage.clickOnWelcomeBanner();
     }
 
     @When("user clicks on search icon")
@@ -32,7 +32,7 @@ public class searchSteps {
 
     @Then("verify task is visible")
     public void verify_task_is_visible() {
-    searchPage.isSearchTaskDisplayed();
+        searchPage.isSearchTaskDisplayed();
     }
 
 }
