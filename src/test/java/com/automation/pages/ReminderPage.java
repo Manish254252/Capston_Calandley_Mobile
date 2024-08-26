@@ -18,17 +18,18 @@ public class ReminderPage extends BasePage {
     WebElement attachIcon;
 
     public void clickOnAddReminder() {
+        new HomePage().clickOnWelcomeBanner();
        while (!isPresentWithoutWait(addReminderBtn))
        {
-           int height = addReminderBtn.getSize().getHeight();
-           int width = addReminderBtn.getSize().getWidth();
-
-//           scrollOrSwipe();
+          int height =  driver.manage().window().getSize().getHeight();
+          int width =  driver.manage().window().getSize().getWidth();
+           scrollOrSwipe(width/2,height/2,width/2,height/4);
        }
         addReminderBtn.click();
     }
 
     public void clickOnCreateBtn() {
+
         createBtn.click();
     }
 
