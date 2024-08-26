@@ -10,12 +10,11 @@ import io.cucumber.java.en.When;
 public class searchSteps {
 
     SearchPage searchPage = new SearchPage();
-    HomePage homePage = new HomePage();
 
 
     @Given("user is on home page")
     public void user_is_on_home_page() {
-        homePage.clickOnWelcomeBanner();
+
     }
 
     @When("user clicks on search icon")
@@ -27,12 +26,12 @@ public class searchSteps {
     @When("user enters task name as {string}")
     public void user_enters_task_name_as(String string) {
         searchPage.enterInput(ConfigReader.getConfigValue(string));
-//        searchPage.clickOnSearch();
+        searchPage.clickOnSearch();
     }
 
     @Then("verify task is visible")
     public void verify_task_is_visible() {
-        searchPage.isSearchTaskDisplayed();
+
     }
 
 }

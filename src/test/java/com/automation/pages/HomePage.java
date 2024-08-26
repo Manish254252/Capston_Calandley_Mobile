@@ -23,16 +23,13 @@ public class HomePage extends BasePage {
         addIcon.click();
     }
 
-    public void clickOnWelcomeBanner() {
+    public  void clickOnWelcomeBanner() {
         if (isPresent(nextBtn)) {
-            while (isPresentWithoutWait(nextBtn)) {
+            for (int i = 0; i < 7; i++) {
                 nextBtn.click();
             }
-        }
-        if (isPresentWithoutWait(doneBtn)) {
             doneBtn.click();
         }
-
     }
 
     public void clickMoreButton() {
@@ -42,4 +39,12 @@ public class HomePage extends BasePage {
     public void clickOnNotePadOption() {
         notePadOption.click();
     }
+
+//    public void clickMoreButton() {
+//        moreBtn.click();
+//    }
+//
+//    public void clickOnNotePadOption() {
+//        notePadOption.click();
+//    }
 }
