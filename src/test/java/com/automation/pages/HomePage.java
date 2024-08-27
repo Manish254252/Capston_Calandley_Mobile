@@ -19,7 +19,6 @@ public class HomePage extends BasePage {
     WebElement notePadOption;
 
 
-
     public void clickAddButton() {
         addIcon.click();
     }

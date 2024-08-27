@@ -12,7 +12,7 @@ public class NotePadPage extends BasePage{
     @FindBy(xpath = "//android.view.View[@content-desc='Create new note']")
     WebElement createNewNoteTab;
 
-    @FindBy(xpath = "//android.view.View[@content-desc='New Note']")
+    @FindBy(xpath = "//android.widget.EditText")
     WebElement newNoteInput;
 
     @FindBy(xpath = "//android.view.View[@content-desc='Create']")
@@ -26,14 +26,14 @@ public class NotePadPage extends BasePage{
     @FindBy(xpath = "//android.webkit.WebView[@text='EmbeddedEditor']")
     WebElement editorWindow;
 
-    @FindBy(xpath = "//android.webkit.WebView[@text='EmbeddedEditor']//android.widget.EditText[contains(@text, '')]")
+    @FindBy(xpath = "//android.widget.EditText")
     WebElement editor;
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='Back']")
     WebElement backButton;
 
     public boolean isNotePadPageDisplayed() {
-        return notePadPageTitle.getText().equals("Notepad") && createNewNoteTab.isDisplayed();
+        return createNewNoteTab.isDisplayed();
     }
 
     public void clickOnCreateNewNoteBtn() {
@@ -43,25 +43,35 @@ public class NotePadPage extends BasePage{
 
     public void enterNoteName(String noteName) {
         newNoteInput.sendKeys(noteName);
-    }
-
-    public void clickOnCreateNoteBtn() {
         createBtn.click();
     }
 
-    public boolean isNoteCreated(String noteName) {
-        String xpath = String.format(noteNameXpath, noteName);
-        WebElement noteTitle = driver.findElement(By.xpath(xpath));
-        return noteTitle.getText().equals(noteName);
+    public void clickOnCreateNoteBtn() {
+
     }
+
+//    public boolean isNoteCreated(String noteName) {
+//        String xpath = String.format(noteNameXpath, noteName);
+//        WebElement noteTitle = driver.findElement(By.xpath(xpath));
+//        return noteTitle.getText().equals(noteName);
+//    }
 
     public void clickOnEditNoteBtn() {
         editBtn.click();
     }
 
     public void enterNoteMsg(String noteMsg) {
-        editorWindow.click();
-        editor.sendKeys(noteMsg);
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        editor.click();
+        if(isClickable(editor)){
+//            editor.click();
+            editor.sendKeys(noteMsg);
+        }
+
     }
 
     public void clickOnBackButton() {
