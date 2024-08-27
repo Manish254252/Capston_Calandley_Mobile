@@ -31,4 +31,5 @@ public class ReminderSteps {
     public void userClicksOnCreateReminderButton() {
         reminderPage.clickOnCreateBtn();
     }
+
 }

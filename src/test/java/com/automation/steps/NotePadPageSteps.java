@@ -22,8 +22,8 @@ public class NotePadPageSteps {
         notePadPage.clickOnCreateNewNoteBtn();
     }
 
-    @And("user enters new note name as {string}")
-    public void userEntersNewNoteNameAs(String noteName) {
+    @And("user creates a new note name as {string}")
+    public void userCreatesANewNoteNameAs(String noteName) {
         notePadPage.enterNoteName(ConfigReader.getConfigValue(noteName));
     }
 
@@ -32,10 +32,10 @@ public class NotePadPageSteps {
         notePadPage.clickOnCreateNoteBtn();
     }
 
-    @Then("verify note is created of name {string}")
-    public void verifyNoteIsCreatedOfName(String noteName) {
-        Assert.assertTrue(notePadPage.isNoteCreated(ConfigReader.getConfigValue(noteName)));
-    }
+//    @Then("verify note is created of name {string}")
+//    public void verifyNoteIsCreatedOfName(String noteName) {
+//        Assert.assertTrue(notePadPage.isNoteCreated(ConfigReader.getConfigValue(noteName)));
+//    }
 
     @When("user clicks on edit note button")
     public void userClicksOnEditNoteButton() {

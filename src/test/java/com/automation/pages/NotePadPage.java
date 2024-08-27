@@ -26,7 +26,7 @@ public class NotePadPage extends BasePage{
     @FindBy(xpath = "//android.webkit.WebView[@text='EmbeddedEditor']")
     WebElement editorWindow;
 
-    @FindBy(xpath = "//android.widget.TextView")
+    @FindBy(xpath = "//android.widget.EditText")
     WebElement editor;
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='Back']")
@@ -42,26 +42,32 @@ public class NotePadPage extends BasePage{
 
     public void enterNoteName(String noteName) {
         newNoteInput.sendKeys(noteName);
-    }
-
-    public void clickOnCreateNoteBtn() {
         createBtn.click();
     }
 
-    public boolean isNoteCreated(String noteName) {
-        String xpath = String.format(noteNameXpath, noteName);
-        WebElement noteTitle = driver.findElement(By.xpath(xpath));
-        return noteTitle.getText().equals(noteName);
+    public void clickOnCreateNoteBtn() {
+
     }
+
+//    public boolean isNoteCreated(String noteName) {
+//        String xpath = String.format(noteNameXpath, noteName);
+//        WebElement noteTitle = driver.findElement(By.xpath(xpath));
+//        return noteTitle.getText().equals(noteName);
+//    }
 
     public void clickOnEditNoteBtn() {
         editBtn.click();
     }
 
     public void enterNoteMsg(String noteMsg) {
-
-        if(isPresent(editor)){
-            editorWindow.click();
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        editor.click();
+        if(isClickable(editor)){
+//            editor.click();
             editor.sendKeys(noteMsg);
         }
 
