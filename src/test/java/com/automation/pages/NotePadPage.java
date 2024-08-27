@@ -37,6 +37,7 @@ public class NotePadPage extends BasePage{
     }
 
     public void clickOnCreateNewNoteBtn() {
+//        new HomePage().clickOnWelcomeBanner();
         createNewNoteTab.click();
     }
 

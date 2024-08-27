@@ -16,7 +16,7 @@ public class HomePageSteps {
 
     @When("user clicks on add button")
     public void user_clicks_on_add_button() {
-        homePage.clickOnWelcomeBanner();
+//        homePage.clickOnWelcomeBanner();
         homePage.clickAddButton();
     }
 
