@@ -18,7 +18,7 @@ public class ReminderPage extends BasePage {
     WebElement attachIcon;
 
     public void clickOnAddReminder() {
-        new HomePage().clickOnWelcomeBanner();
+//        new HomePage().clickOnWelcomeBanner();
        while (!isPresentWithoutWait(addReminderBtn))
        {
           int height =  driver.manage().window().getSize().getHeight();
