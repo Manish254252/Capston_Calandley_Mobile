@@ -3,6 +3,7 @@ package com.automation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NotePadPage extends BasePage{
 
@@ -26,7 +27,10 @@ public class NotePadPage extends BasePage{
     @FindBy(xpath = "//android.webkit.WebView[@text='EmbeddedEditor']")
     WebElement editorWindow;
 
-    @FindBy(xpath = "//android.widget.EditText")
+    @FindBy(xpath = "//android.webkit.WebView//android.widget.TextView")
+    WebElement editor1;
+
+    @FindBy(xpath = "//android.webkit.WebView//android.widget.EditText")
     WebElement editor;
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='Back']")
@@ -59,18 +63,36 @@ public class NotePadPage extends BasePage{
         editBtn.click();
     }
 
-    public void enterNoteMsg(String noteMsg) {
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        editor.click();
-        if(isClickable(editor)){
-//            editor.click();
-            editor.sendKeys(noteMsg);
-        }
 
+    @FindBy(xpath = "//android.view.View[@content-desc]/android.view.View")
+    WebElement lock;
+
+    @FindBy(xpath = "//android.widget.TextView[@text]")
+    WebElement edit;
+
+    @FindBy(xpath = "//android.widget.EditText[@text]")
+    WebElement input;
+
+    public void enterNoteMsg(String noteMsg) {
+//        try {
+//            Thread.sleep(20000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        editorWindow.click();
+//        editor1.click();
+//        editor.sendKeys(noteMsg);
+//        editorWindow.click();
+//        if(isPresent(editor)){
+////            editor.click();
+//            editor.sendKeys(noteMsg);
+//        }
+        wait.until(ExpectedConditions.visibilityOf(lock));
+        wait.until(ExpectedConditions.invisibilityOf(lock));
+        wait.until(ExpectedConditions.elementToBeClickable(edit));
+        edit.click();
+        wait.until(ExpectedConditions.visibilityOf(input));
+        input.sendKeys(noteMsg);
     }
 
     public void clickOnBackButton() {
