@@ -69,7 +69,7 @@ public class NotePadPageSteps {
 
     @When("user clicks on the note to be deleted of name {string}")
     public void userClicksOnTheNoteToBeDeletedOfName(String noteName) {
-        notePadPage.clickOnNoteNameFromList(noteName);
+        notePadPage.clickOnNoteNameFromList(ConfigReader.getConfigValue(noteName));
     }
 
     @And("user clicks on notepad more option")
