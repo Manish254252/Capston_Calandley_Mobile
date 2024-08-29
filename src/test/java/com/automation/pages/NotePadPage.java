@@ -6,7 +6,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class NotePadPage extends BasePage{
+import java.util.List;
+
+public class NotePadPage extends BasePage {
 
     @FindBy(xpath = "//android.view.View[@content-desc='Notepad']")
     WebElement notePadPageTitle;
@@ -37,7 +39,22 @@ public class NotePadPage extends BasePage{
     @FindBy(xpath = "//android.widget.Button[@content-desc='Back']")
     WebElement backButton;
 
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc='Notepad More']")
+    WebElement notePadMore;
+
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc='Delete']")
+    WebElement deleteNoteOption;
+
+    @FindBy(xpath = "//android.widget.ScrollView/android.view.View")
+    List<WebElement> notesList;
+
+    @FindBy(xpath = "//android.widget.Button[@content-desc='Delete']")
+    WebElement confirmDelete;
+
+    int numberOfNotes = 0;
+
     public boolean isNotePadPageDisplayed() {
+        numberOfNotes = notesList.size();
         return createNewNoteTab.isDisplayed();
     }
 
@@ -66,25 +83,6 @@ public class NotePadPage extends BasePage{
     }
 
     public void enterNoteMsg(String noteMsg) {
-//        try {
-//            Thread.sleep(20000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//        editorWindow.click();
-//        editor1.click();
-//        editor.sendKeys(noteMsg);
-//        editorWindow.click();
-//        if(isPresent(editor)){
-////            editor.click();
-//            editor.sendKeys(noteMsg);
-//        }
-        wait.until(ExpectedConditions.visibilityOf(lock));
-        wait.until(ExpectedConditions.invisibilityOf(lock));
-        wait.until(ExpectedConditions.elementToBeClickable(edit));
-        edit.click();
-        wait.until(ExpectedConditions.visibilityOf(input));
-        input.sendKeys(noteMsg);
 
 //        wait.until(ExpectedConditions.visibilityOf(editor));
 //        wait.until(ExpectedConditions.elementToBeClickable(editor));
@@ -122,5 +120,26 @@ public class NotePadPage extends BasePage{
 
         return noteNameEle.getText().equals(noteName) && noteMsgEle.getText().equals(noteMsg);
 
+    }
+
+    public void clickOnNotePadMoreOption() {
+        notePadMore.click();
+    }
+
+    public void clickOnDeleteButton() {
+        deleteNoteOption.click();
+    }
+
+    public void clickOnConfirmDeleteBtn() {
+        confirmDelete.click();
+    }
+
+    public boolean isNoteDeleted() {
+        int noOfNotes = driver.findElements(By.xpath("//android.widget.ScrollView/android.view.View")).size();
+        if(noOfNotes == numberOfNotes -1){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

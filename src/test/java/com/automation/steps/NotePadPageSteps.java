@@ -66,4 +66,29 @@ public class NotePadPageSteps {
     public void verifyNoteIsPresentWithNoteNameAndNoteMsg(String noteName, String noteMsg) {
         Assert.assertTrue(notePadPage.isNotePresentWithNameAndMsg(ConfigReader.getConfigValue(noteName), ConfigReader.getConfigValue(noteMsg)));
     }
+
+    @When("user clicks on the note to be deleted of name {string}")
+    public void userClicksOnTheNoteToBeDeletedOfName(String noteName) {
+        notePadPage.clickOnNoteNameFromList(noteName);
+    }
+
+    @And("user clicks on notepad more option")
+    public void userClicksOnNotepadMoreOption() {
+        notePadPage.clickOnNotePadMoreOption();
+    }
+
+    @And("clicks on delete button")
+    public void clicksOnDeleteButton() {
+        notePadPage.clickOnDeleteButton();
+    }
+
+    @And("clicks on confirm delete button")
+    public void clicksOnConfirmDeleteButton() {
+        notePadPage.clickOnConfirmDeleteBtn();
+    }
+
+    @Then("verify note is deleted")
+    public void verifyNoteIsDeleted() {
+        Assert.assertTrue(notePadPage.isNoteDeleted());
+    }
 }

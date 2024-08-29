@@ -1,6 +1,6 @@
 Feature: Create Notepad Functionality
 
-  Scenario: verify note is created
+  Background:
     Given user enters email "email"
     When  user enters password "password"
     Then user clicks on login btn
@@ -9,6 +9,9 @@ Feature: Create Notepad Functionality
     When user clicks on more button
     And user clicks on notepad option
     Then verify notepad page is displayed
+
+  Scenario: verify note is created
+
     When user clicks on create new note button
     And user creates a new note name as "note.name"
     And user clicks on edit note button
@@ -19,7 +22,12 @@ Feature: Create Notepad Functionality
     Then verify note is present with noteName "note.name" and noteMsg "note.msg"
 
 
-#    Scenario: Verify user de
+  Scenario: Verify user can delete note
+    When user clicks on the note to be deleted of name "deleteNote.name"
+    And user clicks on notepad more option
+    And clicks on delete button
+    And clicks on confirm delete button
+    Then verify note is deleted
 
 
 
