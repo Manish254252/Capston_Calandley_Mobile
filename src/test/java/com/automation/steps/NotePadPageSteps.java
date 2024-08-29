@@ -54,7 +54,7 @@ public class NotePadPageSteps {
 
     @Then("verify note is present of name {string}")
     public void verifyNoteIsPresentOfName(String noteName) {
-        Assert.assertTrue(notePadPage.isNotePresentInList(noteName));
+        Assert.assertTrue(notePadPage.isNotePresentInList(ConfigReader.getConfigValue(noteName)));
     }
 
     @When("user clicks on the note name from the list {string}")
@@ -64,6 +64,6 @@ public class NotePadPageSteps {
 
     @Then("verify note is present with noteName {string} and noteMsg {string}")
     public void verifyNoteIsPresentWithNoteNameAndNoteMsg(String noteName, String noteMsg) {
-        Assert.assertTrue(notePadPage.isNotePresentWithNameAndMsg(noteName, noteMsg));
+        Assert.assertTrue(notePadPage.isNotePresentWithNameAndMsg(ConfigReader.getConfigValue(noteName), ConfigReader.getConfigValue(noteMsg)));
     }
 }

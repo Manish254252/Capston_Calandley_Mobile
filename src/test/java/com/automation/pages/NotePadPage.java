@@ -2,9 +2,11 @@ package com.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class NotePadPage extends BasePage{
+public class NotePadPage extends BasePage {
 
     @FindBy(xpath = "//android.view.View[@content-desc='Notepad']")
     WebElement notePadPageTitle;
@@ -61,14 +63,13 @@ public class NotePadPage extends BasePage{
     }
 
     public void enterNoteMsg(String noteMsg) {
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+//        wait.until(ExpectedConditions.visibilityOf(editor));
+//        wait.until(ExpectedConditions.elementToBeClickable(editor));
+        new Actions(driver).pause(20000).build().perform();
         editor.click();
-        if(isClickable(editor)){
-//            editor.click();
+        if (isClickable(editor)) {
+            editor.click();
             editor.sendKeys(noteMsg);
         }
 
@@ -80,11 +81,8 @@ public class NotePadPage extends BasePage{
 
     public boolean isNotePresentInList(String noteName) {
         String xpath = String.format(noteNameXpath, noteName);
-        WebElement noteNameEle = driver.findElement(By.xpath(xpath));
-        if(noteNameEle.isDisplayed()){
-            return true;
-        }
-        return false;
+        WebElement noteNameEle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        return noteNameEle.isDisplayed();
     }
 
     public void clickOnNoteNameFromList(String noteName) {
@@ -94,11 +92,13 @@ public class NotePadPage extends BasePage{
     }
 
     public boolean isNotePresentWithNameAndMsg(String noteName, String noteMsg) {
+
         String xpath = String.format(noteNameXpath, noteName);
         WebElement noteNameEle = driver.findElement(By.xpath(xpath));
 
         String noteMsgXpath = String.format(noteNameXpath, noteMsg);
         WebElement noteMsgEle = driver.findElement(By.xpath(noteMsgXpath));
+
 
         return noteNameEle.getText().equals(noteName) && noteMsgEle.getText().equals(noteMsg);
 
