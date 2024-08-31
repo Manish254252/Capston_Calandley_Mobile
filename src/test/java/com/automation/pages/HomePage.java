@@ -1,5 +1,6 @@
 package com.automation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -72,6 +73,7 @@ public class HomePage extends BasePage {
     }
 
     public boolean isInviteSent() {
+        inviteSentMsg = driver.findElement(By.xpath("//android.widget.FrameLayout/following-sibling::android.widget.Toast[contains(@text,'Invites sent!')]"));
         return inviteSentMsg.isDisplayed();
     }
 
