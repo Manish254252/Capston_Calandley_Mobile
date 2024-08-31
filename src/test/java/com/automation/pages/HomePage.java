@@ -1,5 +1,6 @@
 package com.automation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -33,8 +34,12 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//android.widget.Toast[contains(@text,'Invites sent')]")
     WebElement inviteSentMsg;
 
-    public void clickAddButton() {
+    @FindBy(xpath = "//android.widget.Switch[@content-desc='Next']")
+    WebElement nextTaskBtn;
 
+    String nextTaskXPATH = "//android.widget.Button[contains(@content-desc,'%s')]";
+
+    public void clickAddButton() {
         addIcon.click();
     }
 
@@ -73,8 +78,28 @@ boolean isinvitesent =false;
         isinvitesent = true;
     }
 
-    public boolean isInviteSent() {
-       return isinvitesent;
+//    public boolean isInviteSent() {
+//        inviteSentMsg = driver.findElement(By.xpath("/hierarchy//android.widget.Toast[contains(@text, 'Invites sent!')]"));
+//        boolean isEle = isElementVisible(inviteSentMsg);
+//        System.out.println(isEle);
+//        return isEle;
+////        return inviteSentMsg.isDisplayed();
+//    }
+
+    public void clickOnNextBtn() {
+        nextTaskBtn.click();
+    }
+
+    public boolean isNextTaskDisplayed(String nextTask) {
+        String xpath = String.format(nextTaskXPATH, nextTask);
+        return driver.findElement(By.xpath(xpath)).isDisplayed();
+    }
+
+    public void clickOnNextTask(String nextTask) {
+        String xpath = String.format(nextTaskXPATH, nextTask);
+        System.out.println(xpath);
+        driver.findElement(By.xpath(xpath)).click();
+//       return isinvitesent;
 
     }
 

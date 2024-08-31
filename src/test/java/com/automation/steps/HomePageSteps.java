@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pages.HomePage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -62,4 +63,18 @@ public class HomePageSteps {
         Assert.assertTrue(homePage.isInviteSent());
     }
 
+    @When("user clicks on Next button")
+    public void userClicksOnNextButton() {
+        homePage.clickOnNextBtn();
+    }
+
+    @Then("verify next tasks of name {string} displayed")
+    public void verifyNextTasksOfNameDisplayed(String nextTask) {
+        Assert.assertTrue(homePage.isNextTaskDisplayed(ConfigReader.getConfigValue(nextTask)));
+    }
+
+    @When("user clicks on the task name as {string}")
+    public void userClicksOnTheTaskNameAs(String nextTask) {
+        homePage.clickOnNextTask(ConfigReader.getConfigValue(nextTask));
+    }
 }

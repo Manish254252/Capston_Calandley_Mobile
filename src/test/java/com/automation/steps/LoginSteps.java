@@ -40,5 +40,4 @@ public class LoginSteps {
         new HomePage().clickOnWelcomeBanner();
     }
 
-
 }

@@ -87,8 +87,8 @@ public class NotePadPageSteps {
         notePadPage.clickOnConfirmDeleteBtn();
     }
 
-    @Then("verify note is deleted")
-    public void verifyNoteIsDeleted() {
-        Assert.assertTrue(notePadPage.isNoteDeleted());
+    @Then("verify note is deleted of name {string}")
+    public void verifyNoteIsDeletedOfName(String noteName) {
+        Assert.assertTrue(notePadPage.isNoteDeletedOfName(ConfigReader.getConfigValue(noteName)));
     }
 }
