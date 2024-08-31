@@ -88,11 +88,13 @@ public class NotePadPage extends BasePage {
 //        wait.until(ExpectedConditions.visibilityOf(editor));
 //        wait.until(ExpectedConditions.elementToBeClickable(editor));
         new Actions(driver).pause(20000).build().perform();
-        editor.click();
-        if (isClickable(editor)) {
-            editor.click();
-            editor.sendKeys(noteMsg);
-        }
+        driver.findElement(By.xpath("//android.widget.TextView")).click();
+        editor.sendKeys(noteMsg);
+//        editor.click();
+//        if (isClickable(editor)) {
+//            editor.click();
+//            editor.sendKeys(noteMsg);
+//        }
 
     }
 

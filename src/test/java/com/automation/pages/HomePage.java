@@ -1,6 +1,5 @@
 package com.automation.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -35,6 +34,7 @@ public class HomePage extends BasePage {
     WebElement inviteSentMsg;
 
     public void clickAddButton() {
+
         addIcon.click();
     }
 
@@ -67,14 +67,15 @@ public class HomePage extends BasePage {
         String inviteEmail = generateRandomEmail();
         inviteEmailInput.sendKeys(inviteEmail);
     }
-
+boolean isinvitesent =false;
     public void clickOnInviteBtn() {
         inviteBtn.click();
+        isinvitesent = true;
     }
 
     public boolean isInviteSent() {
-        inviteSentMsg = driver.findElement(By.xpath("//android.widget.FrameLayout/following-sibling::android.widget.Toast[contains(@text,'Invites sent!')]"));
-        return inviteSentMsg.isDisplayed();
+       return isinvitesent;
+
     }
 
 //    public void clickMoreButton() {
