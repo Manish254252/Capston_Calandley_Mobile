@@ -1,10 +1,12 @@
 package com.automation.steps;
 
 import com.automation.pages.HomePage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class HomePageSteps {
     HomePage homePage = new HomePage();
@@ -35,4 +37,28 @@ public class HomePageSteps {
         homePage.clickOnNotePadOption();
     }
 
+    @When("user clicks on invite option")
+    public void userClicksOnInviteOption() {
+        homePage.clickInviteOption();
+    }
+
+    @Then("verify invite popup is displayed")
+    public void verifyInvitePopupIsDisplayed() {
+        Assert.assertTrue(homePage.isInvitePopupDisplayed());
+    }
+
+    @When("user enters email of member to invite {string}")
+    public void userEntersEmailOfMemberToInvite(String inviteEmail) {
+        homePage.enterInviteEmail(ConfigReader.getConfigValue(inviteEmail));
+    }
+
+    @And("clicks on invite button")
+    public void clicksOnInviteButton() {
+        homePage.clickOnInviteBtn();
+    }
+
+    @Then("verify invite is sent")
+    public void verifyInviteIsSent() {
+        Assert.assertTrue(homePage.isInviteSent());
+    }
 }

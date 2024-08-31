@@ -55,6 +55,7 @@ public class NotePadPage extends BasePage {
 
     public boolean isNotePadPageDisplayed() {
         numberOfNotes = notesList.size();
+        System.out.println(numberOfNotes);
         return createNewNoteTab.isDisplayed();
     }
 
@@ -136,6 +137,7 @@ public class NotePadPage extends BasePage {
 
     public boolean isNoteDeleted() {
         int noOfNotes = driver.findElements(By.xpath("//android.widget.ScrollView/android.view.View")).size();
+        System.out.println(noOfNotes);
         if(noOfNotes == numberOfNotes -1){
             return true;
         } else {
