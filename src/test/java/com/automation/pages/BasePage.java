@@ -83,6 +83,16 @@ public class BasePage {
         return true;
     }
 
+    public boolean isElementVisible(WebElement element) {
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            return true;
+        }catch (Exception i){
+            return false;
+        }
+
+    }
+
     public void scrollOrSwipe(int startX, int startY, int endX, int endY) {
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");

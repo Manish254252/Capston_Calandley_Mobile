@@ -34,6 +34,11 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//android.widget.Toast[contains(@text,'Invites sent')]")
     WebElement inviteSentMsg;
 
+    @FindBy(xpath = "//android.widget.Switch[@content-desc='Next']")
+    WebElement nextTaskBtn;
+
+    String nextTaskXPATH = "//android.widget.Button[contains(@content-desc,'%s')]";
+
     public void clickAddButton() {
         addIcon.click();
     }
@@ -73,8 +78,26 @@ public class HomePage extends BasePage {
     }
 
     public boolean isInviteSent() {
-        inviteSentMsg = driver.findElement(By.xpath("//android.widget.FrameLayout/following-sibling::android.widget.Toast[contains(@text,'Invites sent!')]"));
-        return inviteSentMsg.isDisplayed();
+        inviteSentMsg = driver.findElement(By.xpath("/hierarchy//android.widget.Toast[contains(@text, 'Invites sent!')]"));
+        boolean isEle = isElementVisible(inviteSentMsg);
+        System.out.println(isEle);
+        return isEle;
+//        return inviteSentMsg.isDisplayed();
+    }
+
+    public void clickOnNextBtn() {
+        nextTaskBtn.click();
+    }
+
+    public boolean isNextTaskDisplayed(String nextTask) {
+        String xpath = String.format(nextTaskXPATH, nextTask);
+        return driver.findElement(By.xpath(xpath)).isDisplayed();
+    }
+
+    public void clickOnNextTask(String nextTask) {
+        String xpath = String.format(nextTaskXPATH, nextTask);
+        System.out.println(xpath);
+        driver.findElement(By.xpath(xpath)).click();
     }
 
 //    public void clickMoreButton() {

@@ -27,7 +27,7 @@ Feature: Create Notepad Functionality
     And user clicks on notepad more option
     And clicks on delete button
     And clicks on confirm delete button
-    Then verify note is deleted
+    Then verify note is deleted of name "deleteNote.name"
 
 
 

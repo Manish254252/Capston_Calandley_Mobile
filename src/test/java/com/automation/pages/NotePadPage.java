@@ -6,8 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
-
 public class NotePadPage extends BasePage {
 
     @FindBy(xpath = "//android.view.View[@content-desc='Notepad']")
@@ -45,17 +43,13 @@ public class NotePadPage extends BasePage {
     @FindBy(xpath = "//android.widget.ImageView[@content-desc='Delete']")
     WebElement deleteNoteOption;
 
-    @FindBy(xpath = "//android.widget.ScrollView/android.view.View")
-    List<WebElement> notesList;
-
     @FindBy(xpath = "//android.widget.Button[@content-desc='Delete']")
     WebElement confirmDelete;
 
-    int numberOfNotes = 0;
+    String NoteXPATH = "//android.view.View[@content-desc='%s']";
+
 
     public boolean isNotePadPageDisplayed() {
-        numberOfNotes = notesList.size();
-        System.out.println(numberOfNotes);
         return createNewNoteTab.isDisplayed();
     }
 
@@ -135,13 +129,9 @@ public class NotePadPage extends BasePage {
         confirmDelete.click();
     }
 
-    public boolean isNoteDeleted() {
-        int noOfNotes = driver.findElements(By.xpath("//android.widget.ScrollView/android.view.View")).size();
-        System.out.println(noOfNotes);
-        if(noOfNotes == numberOfNotes -1){
-            return true;
-        } else {
-            return false;
-        }
+    public boolean isNoteDeletedOfName(String noteName) {
+        String xpath = String.format(NoteXPATH, noteName);
+       WebElement noteElement = driver.findElement(By.xpath(xpath));
+        return !noteElement.isDisplayed();
     }
 }
