@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static java.time.Duration.ofSeconds;
 
@@ -129,7 +130,28 @@ public class BasePage {
         driver.perform(Arrays.asList(zoomInFinger1, zoomInFinger2));
     }
 
+    private static final String[] DOMAINS = {"example.com", "test.com", "sample.org", "demo.net"};
 
+    private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+    private static final Random RANDOM = new Random();
+
+    private static String generateRandomString(int length) {
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int index = RANDOM.nextInt(CHARACTERS.length());
+            sb.append(CHARACTERS.charAt(index));
+        }
+        return sb.toString();
+    }
+
+    public static String generateRandomEmail() {
+        String username = generateRandomString(7 + RANDOM.nextInt(6));
+
+        String domain = DOMAINS[RANDOM.nextInt(DOMAINS.length)];
+
+        return username + "@" + domain;
+    }
 }
 
 

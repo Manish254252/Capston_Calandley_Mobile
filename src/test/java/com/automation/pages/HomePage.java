@@ -62,7 +62,8 @@ public class HomePage extends BasePage {
         return invitePopupHeading.isDisplayed() && inviteBtn.isDisplayed();
     }
 
-    public void enterInviteEmail(String inviteEmail) {
+    public void enterInviteEmail() {
+        String inviteEmail = generateRandomEmail();
         inviteEmailInput.sendKeys(inviteEmail);
     }
 

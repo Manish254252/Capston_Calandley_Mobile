@@ -1,7 +1,6 @@
 package com.automation.steps;
 
 import com.automation.pages.HomePage;
-import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -47,9 +46,10 @@ public class HomePageSteps {
         Assert.assertTrue(homePage.isInvitePopupDisplayed());
     }
 
-    @When("user enters email of member to invite {string}")
-    public void userEntersEmailOfMemberToInvite(String inviteEmail) {
-        homePage.enterInviteEmail(ConfigReader.getConfigValue(inviteEmail));
+
+    @When("user enters email of member to invite")
+    public void userEntersEmailOfMemberToInvite() {
+        homePage.enterInviteEmail();
     }
 
     @And("clicks on invite button")
@@ -61,4 +61,5 @@ public class HomePageSteps {
     public void verifyInviteIsSent() {
         Assert.assertTrue(homePage.isInviteSent());
     }
+
 }
