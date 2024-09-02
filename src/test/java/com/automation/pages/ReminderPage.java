@@ -29,7 +29,7 @@ public class ReminderPage extends BasePage {
     @FindBy(xpath = "//android.widget.Switch[@content-desc='Overdue']")
     WebElement overDueBtn;
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc]")
+    @FindBy(xpath = "//android.widget.Button[contains(@content-desc,'Reminder:') and not(contains(@content-desc,'Create'))]")
     List<WebElement> reminderList;
 
     String reminderNameXPATH = "//android.widget.Button[contains(@content-desc, '%s')]";
@@ -87,12 +87,16 @@ public class ReminderPage extends BasePage {
 
     int noOfReminder = 0;
     public boolean isListOfReminderListDisplayed() {
-        noOfReminder = reminderList.size() - 2;
-        return reminderList.size() > 2;
+        waitForElementToBeVisible(reminderList.get(0));
+        noOfReminder = reminderList.size();
+        System.out.println("no OF Reminaindoef"+noOfReminder);
+        System.out.println("List i  askdnas"+reminderList.size());
+        return !reminderList.isEmpty();
     }
 
     public void clickOnReminderOfName(String overdueReminderName) {
         String xpath = String.format(reminderNameXPATH, overdueReminderName);
+        System.out.println(xpath);
         driver.findElement(By.xpath(xpath)).click();
     }
 
