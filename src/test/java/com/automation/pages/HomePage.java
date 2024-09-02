@@ -39,6 +39,12 @@ public class HomePage extends BasePage {
 
     String nextTaskXPATH = "//android.widget.Button[contains(@content-desc,'%s')]";
 
+    @FindBy(xpath = "//android.widget.Switch[@content-desc='Overdue']")
+    WebElement overdueBtn;
+
+    @FindBy(xpath = "//android.widget.Button[@content-desc='See all My Work']")
+    WebElement seeAllMyWorkBtn;
+
     public void clickAddButton() {
         addIcon.click();
     }
@@ -82,7 +88,6 @@ public class HomePage extends BasePage {
         boolean isEle = isElementVisible(inviteSentMsg);
         System.out.println(isEle);
         return isEle;
-//        return inviteSentMsg.isDisplayed();
     }
 
     public void clickOnNextBtn() {
@@ -98,6 +103,14 @@ public class HomePage extends BasePage {
         String xpath = String.format(nextTaskXPATH, nextTask);
         System.out.println(xpath);
         driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void clickOnOverdueBtn() {
+        overdueBtn.click();
+    }
+
+    public void clickOnSeeAllOfMyWork() {
+        seeAllMyWorkBtn.click();
     }
 
 //    public void clickMoreButton() {

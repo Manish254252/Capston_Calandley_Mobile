@@ -68,7 +68,7 @@ public class HomePageSteps {
         homePage.clickOnNextBtn();
     }
 
-    @Then("verify next tasks of name {string} displayed")
+    @Then("verify tasks of name {string} displayed")
     public void verifyNextTasksOfNameDisplayed(String nextTask) {
         Assert.assertTrue(homePage.isNextTaskDisplayed(ConfigReader.getConfigValue(nextTask)));
     }
@@ -76,5 +76,15 @@ public class HomePageSteps {
     @When("user clicks on the task name as {string}")
     public void userClicksOnTheTaskNameAs(String nextTask) {
         homePage.clickOnNextTask(ConfigReader.getConfigValue(nextTask));
+    }
+
+    @When("user clicks on overdue button")
+    public void userClicksOnOverdueButton() {
+        homePage.clickOnOverdueBtn();
+    }
+
+    @When("user clicks on see all of my work")
+    public void userClicksOnSeeAllOfMyWork() {
+        homePage.clickOnSeeAllOfMyWork();
     }
 }
