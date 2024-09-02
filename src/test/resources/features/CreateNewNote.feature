@@ -11,7 +11,6 @@ Feature: Create Notepad Functionality
     Then verify notepad page is displayed
 
   Scenario: verify note is created
-
     When user clicks on create new note button
     And user creates a new note name as "note.name"
     And user clicks on edit note button

@@ -6,10 +6,19 @@ Feature: Complete Next task functionality
     Then user clicks on login btn
     And verify user logged in
     And user is on home page
-    When user clicks on see all of my work
-    Then verify my work page is displayed
+
+  Scenario: verify user can add new task
+    When user clicks on add button
+    And user enters task title as "task.title"
+    And user enters assignee
+    And user clicks on sets date
+    And user sets due date as "due.date"
+    And user clicks on create button
+    Then verify task is created
 
   Scenario: Verify user can complete the next task
+    When user clicks on see all of my work
+    Then verify my work page is displayed
     When user clicks on Next button
     Then verify tasks of name "nextTask.name" displayed
     When user clicks on the task name as "nextTask.name"
@@ -20,6 +29,8 @@ Feature: Complete Next task functionality
     Then verify task is marked as complete
 
   Scenario: Verify user can complete the overDue task
+    When user clicks on see all of my work
+    Then verify my work page is displayed
     When user clicks on overdue task button
     Then verify tasks of name "overdueTask.name" displayed
     When user clicks on the task name as "overdueTask.name"
