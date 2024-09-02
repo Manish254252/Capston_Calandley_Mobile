@@ -14,8 +14,8 @@ public class DriverManager {
         capabilities.setCapability("platformName", ConfigReader.getConfigValue("platform.name"));
         capabilities.setCapability("deviceName", ConfigReader.getConfigValue("device.name"));
         capabilities.setCapability("automationName", ConfigReader.getConfigValue("automation.name"));
-//        capabilities.setCapability("app", System.getProperty("user.dir")+ConfigReader.getConfigValue("app.path"));
-        capabilities.setCapability("app", "C:\\Users\\280707\\Downloads\\clickup.apk");
+        capabilities.setCapability("app", ConfigReader.getConfigValue("app.path"));
+//        capabilities.setCapability("app", "C:\\Users\\280707\\Downloads\\clickup.apk");
 //        capabilities.setCapability("app", ConfigReader.getConfigValue("app.path"));
         capabilities.setCapability("appActivity", ConfigReader.getConfigValue("app.activity"));
         capabilities.setCapability("appPackage", ConfigReader.getConfigValue("app.package"));

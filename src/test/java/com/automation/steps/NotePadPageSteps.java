@@ -27,15 +27,6 @@ public class NotePadPageSteps {
         notePadPage.enterNoteName(ConfigReader.getConfigValue(noteName));
     }
 
-    @And("user clicks on create new note button of notePad")
-    public void userClicksOnCreateNewNoteButtonOfNotePad() {
-        notePadPage.clickOnCreateNoteBtn();
-    }
-
-//    @Then("verify note is created of name {string}")
-//    public void verifyNoteIsCreatedOfName(String noteName) {
-//        Assert.assertTrue(notePadPage.isNoteCreated(ConfigReader.getConfigValue(noteName)));
-//    }
 
     @When("user clicks on edit note button")
     public void userClicksOnEditNoteButton() {
