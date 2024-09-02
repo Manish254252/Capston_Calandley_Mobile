@@ -12,3 +12,15 @@ Feature: create a reminder
     And user enters reminder name as "user.reminder"
     And user clicks on create reminder button
     Then verify reminder is visible
+
+  Scenario: verify user can delete a remainder
+    When user clicks on see all of reminder
+    Then verify reminder page is displayed
+    When user clicks on overdue option
+    Then verify list of overdue remainders are displayed
+    When user clicks on overdue remainder of name "overdueReminder.name"
+    Then verify reminder details page is displayed
+    When user clicks on more option
+    And clicks on delete button of reminder
+    Then verify reminder is deleted
+

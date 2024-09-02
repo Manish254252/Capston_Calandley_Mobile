@@ -5,6 +5,7 @@ import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class ReminderSteps {
     ReminderPage reminderPage = new ReminderPage();
@@ -32,4 +33,48 @@ public class ReminderSteps {
         reminderPage.clickOnCreateBtn();
     }
 
+    @When("user clicks on see all of reminder")
+    public void userClicksOnSeeAllOfReminder() {
+        reminderPage.clickOnSeeAllOfRemainder();
+    }
+
+    @Then("verify reminder page is displayed")
+    public void verifyReminderPageIsDisplayed() {
+        Assert.assertTrue(reminderPage.isRemainderPageDisplayed());
+    }
+
+    @When("user clicks on overdue option")
+    public void userClicksOnOverdueOption() {
+        reminderPage.clickOnOverdueBtn();
+    }
+
+    @Then("verify list of overdue remainders are displayed")
+    public void verifyListOfOverdueRemaindersAreDisplayed() {
+        Assert.assertTrue(reminderPage.isListOfReminderListDisplayed());
+    }
+
+    @When("user clicks on overdue remainder of name {string}")
+    public void userClicksOnOverdueRemainderOfName(String overdueReminderName) {
+        reminderPage.clickOnReminderOfName(ConfigReader.getConfigValue(overdueReminderName));
+    }
+
+    @Then("verify reminder details page is displayed")
+    public void verifyReminderDetailsPageIsDisplayed() {
+        Assert.assertTrue(reminderPage.isReminderDetailsPageDisplayed());
+    }
+
+    @When("user clicks on more option")
+    public void userClicksOnMoreOption() {
+        reminderPage.clickOnMoreOption();
+    }
+
+    @And("clicks on delete button of reminder")
+    public void clicksOnDeleteButtonOfReminder() {
+        reminderPage.clickDeleteReminderBtn();
+    }
+
+    @Then("verify reminder is deleted")
+    public void verifyReminderIsDeleted() {
+        Assert.assertTrue(reminderPage.isReminderDeleted());
+    }
 }

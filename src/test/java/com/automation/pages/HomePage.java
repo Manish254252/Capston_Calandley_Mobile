@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
         addIcon.click();
     }
 
-    public  void clickOnWelcomeBanner() {
+    public void clickOnWelcomeBanner() {
         if (isPresent(nextBtn)) {
             for (int i = 0; i < 7; i++) {
                 nextBtn.click();
