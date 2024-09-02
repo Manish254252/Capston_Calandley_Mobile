@@ -72,19 +72,18 @@ public class HomePage extends BasePage {
         String inviteEmail = generateRandomEmail();
         inviteEmailInput.sendKeys(inviteEmail);
     }
-boolean isinvitesent =false;
+
     public void clickOnInviteBtn() {
         inviteBtn.click();
-        isinvitesent = true;
     }
 
-//    public boolean isInviteSent() {
-//        inviteSentMsg = driver.findElement(By.xpath("/hierarchy//android.widget.Toast[contains(@text, 'Invites sent!')]"));
-//        boolean isEle = isElementVisible(inviteSentMsg);
-//        System.out.println(isEle);
-//        return isEle;
-////        return inviteSentMsg.isDisplayed();
-//    }
+    public boolean isInviteSent() {
+        inviteSentMsg = driver.findElement(By.xpath("/hierarchy//android.widget.Toast[contains(@text, 'Invites sent!')]"));
+        boolean isEle = isElementVisible(inviteSentMsg);
+        System.out.println(isEle);
+        return isEle;
+//        return inviteSentMsg.isDisplayed();
+    }
 
     public void clickOnNextBtn() {
         nextTaskBtn.click();
@@ -99,8 +98,6 @@ boolean isinvitesent =false;
         String xpath = String.format(nextTaskXPATH, nextTask);
         System.out.println(xpath);
         driver.findElement(By.xpath(xpath)).click();
-//       return isinvitesent;
-
     }
 
 //    public void clickMoreButton() {

@@ -60,7 +60,7 @@ public class HomePageSteps {
 
     @Then("verify invite is sent")
     public void verifyInviteIsSent() {
-//        Assert.assertTrue();
+        Assert.assertTrue(homePage.isInviteSent());
     }
 
     @When("user clicks on Next button")

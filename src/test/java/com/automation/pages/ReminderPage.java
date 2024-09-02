@@ -113,7 +113,7 @@ public class ReminderPage extends BasePage {
     }
 
     public boolean isReminderDeleted() {
-        int reminderLeft = driver.findElements(By.xpath("//android.widget.Button[@content-desc]")).size();
+        int reminderLeft = driver.findElements(By.xpath("//android.widget.Button[contains(@content-desc,'Reminder:') and not(contains(@content-desc,'Create'))]")).size();
         return reminderLeft == noOfReminder-1;
     }
 }
