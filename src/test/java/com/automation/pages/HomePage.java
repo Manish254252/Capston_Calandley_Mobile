@@ -50,6 +50,9 @@ public class HomePage extends BasePage {
     }
 
     public void clickOnWelcomeBanner() {
+        moreBtn.click();
+
+
         if (isPresent(nextBtn)) {
             for (int i = 0; i < 7; i++) {
                 nextBtn.click();

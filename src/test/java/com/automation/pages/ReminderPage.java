@@ -45,12 +45,14 @@ public class ReminderPage extends BasePage {
 
     public void clickOnAddReminder() {
 //        new HomePage().clickOnWelcomeBanner();
+        int height =  driver.manage().window().getSize().getHeight();
+        int width =  driver.manage().window().getSize().getWidth();
        while (!isPresentWithoutWait(addReminderBtn))
        {
-          int height =  driver.manage().window().getSize().getHeight();
-          int width =  driver.manage().window().getSize().getWidth();
+
            scrollOrSwipe(width/2,height/2,width/2,height/4);
        }
+        scrollOrSwipe(width/2,height/2,width/2,height/4);
         addReminderBtn.click();
     }
 
