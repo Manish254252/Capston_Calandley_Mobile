@@ -79,16 +79,12 @@ public class NotePadPage extends BasePage {
 
     public void enterNoteMsg(String noteMsg) {
 
-//        wait.until(ExpectedConditions.visibilityOf(editor));
-//        wait.until(ExpectedConditions.elementToBeClickable(editor));
-        new Actions(driver).pause(20000).build().perform();
-        driver.findElement(By.xpath("//android.widget.TextView")).click();
+        new Actions(driver).pause(10000).build().perform();
+
+        tap(115, 387);
+        System.out.println("after click");
         editor.sendKeys(noteMsg);
-//        editor.click();
-//        if (isClickable(editor)) {
-//            editor.click();
-//            editor.sendKeys(noteMsg);
-//        }
+
 
     }
 
@@ -109,13 +105,15 @@ public class NotePadPage extends BasePage {
     }
 
     public boolean isNotePresentWithNameAndMsg(String noteName, String noteMsg) {
+        new Actions(driver).pause(5000).build().perform();
+
         String xpath = String.format(noteNameXpath, noteName);
         WebElement noteNameEle = driver.findElement(By.xpath(xpath));
 
         String noteMsgXpath = String.format(noteNameXpath, noteMsg);
         WebElement noteMsgEle = driver.findElement(By.xpath(noteMsgXpath));
 
-        return noteNameEle.getText().equals(noteName) && noteMsgEle.getText().equals(noteMsg);
+        return noteNameEle.getAttribute("content-desc").equals(noteName) && noteMsgEle.getAttribute("content-desc").equals(noteMsg);
 
     }
 
@@ -133,7 +131,7 @@ public class NotePadPage extends BasePage {
 
     public boolean isNoteDeletedOfName(String noteName) {
         String xpath = String.format(NoteXPATH, noteName);
-       WebElement noteElement = driver.findElement(By.xpath(xpath));
+        WebElement noteElement = driver.findElement(By.xpath(xpath));
         return !noteElement.isDisplayed();
     }
 }

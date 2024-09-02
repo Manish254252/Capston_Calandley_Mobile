@@ -25,7 +25,7 @@ public class BasePage {
     BasePage() {
         driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, ofSeconds(30));
+        wait = new WebDriverWait(driver, ofSeconds(20));
     }
 
     public boolean isPresentWithoutWait(WebElement element) {
