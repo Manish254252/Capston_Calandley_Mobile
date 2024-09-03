@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+
 public class NotePadPage extends BasePage {
 
     @FindBy(xpath = "//android.view.View[@content-desc='Notepad']")
@@ -48,6 +50,9 @@ public class NotePadPage extends BasePage {
 
     String NoteXPATH = "//android.view.View[@content-desc='%s']";
 
+    @FindBy(xpath = "(//android.view.View[@content-desc])")
+    List<WebElement> noteList;
+    int noteListSize = noteList.size();
 
     public boolean isNotePadPageDisplayed() {
         return createNewNoteTab.isDisplayed();
@@ -79,14 +84,12 @@ public class NotePadPage extends BasePage {
 
     public void enterNoteMsg(String noteMsg) {
 
-//        wait.until(ExpectedConditions.visibilityOf(editor));
-//        wait.until(ExpectedConditions.elementToBeClickable(editor));
-        new Actions(driver).pause(20000).build().perform();
-        editor.click();
-        if (isClickable(editor)) {
-            editor.click();
-            editor.sendKeys(noteMsg);
-        }
+        new Actions(driver).pause(10000).build().perform();
+
+        tap(115, 387);
+        System.out.println("after click");
+        editor.sendKeys(noteMsg);
+
 
     }
 
@@ -107,13 +110,15 @@ public class NotePadPage extends BasePage {
     }
 
     public boolean isNotePresentWithNameAndMsg(String noteName, String noteMsg) {
+        new Actions(driver).pause(5000).build().perform();
+
         String xpath = String.format(noteNameXpath, noteName);
         WebElement noteNameEle = driver.findElement(By.xpath(xpath));
 
         String noteMsgXpath = String.format(noteNameXpath, noteMsg);
         WebElement noteMsgEle = driver.findElement(By.xpath(noteMsgXpath));
 
-        return noteNameEle.getText().equals(noteName) && noteMsgEle.getText().equals(noteMsg);
+        return noteNameEle.getAttribute("content-desc").equals(noteName) && noteMsgEle.getAttribute("content-desc").equals(noteMsg);
 
     }
 
@@ -131,7 +136,7 @@ public class NotePadPage extends BasePage {
 
     public boolean isNoteDeletedOfName(String noteName) {
         String xpath = String.format(NoteXPATH, noteName);
-       WebElement noteElement = driver.findElement(By.xpath(xpath));
+        WebElement noteElement = driver.findElement(By.xpath(xpath));
         return !noteElement.isDisplayed();
     }
 }

@@ -41,6 +41,7 @@ public class AddTaskPage extends BasePage {
 
     public void enterTaskTitle(String title) {
         taskTitleInput.click();
+        taskTitleInput.clear();
         taskTitleInput.sendKeys(title);
     }
 

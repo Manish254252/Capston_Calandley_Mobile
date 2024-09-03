@@ -51,7 +51,7 @@ public class HomePage extends BasePage {
 
     public void clickOnWelcomeBanner() {
         moreBtn.click();
-
+        tap(115, 387);
 
         if (isPresent(nextBtn)) {
             for (int i = 0; i < 7; i++) {
