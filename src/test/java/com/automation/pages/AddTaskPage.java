@@ -42,7 +42,9 @@ public class AddTaskPage extends BasePage {
     public void enterTaskTitle(String title) {
         taskTitleInput.click();
         taskTitleInput.clear();
-        taskTitleInput.sendKeys(title);
+        for (char ch : title.toCharArray()) {
+            taskTitleInput.sendKeys(Character.toString(ch));
+        }
     }
 
     public void clickOnAddAssignee() {
@@ -80,17 +82,7 @@ public class AddTaskPage extends BasePage {
             }
         }
 
-        //        boolean requiredDateB = isElementPresent(driver.findElement(By.xpath(monthYearXpath + dateXpath)));
 
-//        int width = calenderMonthDiv.getSize().getWidth();
-//        int height = calenderMonthDiv.getSize().getHeight();
-//        int x = calenderMonthDiv.getLocation().getX();
-//        int y = calenderMonthDiv.getLocation().getY();
-
-//        while (!isPresentWithoutWait(requiredDate)){
-//            requiredDate = driver.findElement(By.xpath(monthYearXpath + dateXpath));
-//            scrollOrSwipe(width/2 + x, height/2 + y, width/2 + x, height/2  );
-//        }
         requiredDate.click();
     }
 

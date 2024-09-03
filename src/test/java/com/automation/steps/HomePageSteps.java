@@ -70,7 +70,7 @@ public class HomePageSteps {
 
     @Then("verify tasks of name {string} displayed")
     public void verifyNextTasksOfNameDisplayed(String nextTask) {
-        Assert.assertTrue(homePage.isNextTaskDisplayed(ConfigReader.getConfigValue(nextTask)));
+        Assert.assertTrue("There are no overdue tasks",homePage.isNextTaskDisplayed(ConfigReader.getConfigValue(nextTask)));
     }
 
     @When("user clicks on the task name as {string}")

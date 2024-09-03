@@ -29,6 +29,13 @@ Feature: Complete Next task functionality
     Then verify task is marked as complete
 
   Scenario: Verify user can complete the overDue task
+    When user clicks on add button
+    And user enters task title as "overdueTask.name"
+    And user enters assignee
+    And user clicks on sets date
+    And user sets due date
+    And user clicks on create button
+    Then verify task is created
     When user clicks on see all of my work
     Then verify my work page is displayed
     When user clicks on overdue task button

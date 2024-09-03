@@ -43,4 +43,9 @@ public class AddTaskPageSteps {
     }
 
 
+    @And("user sets due date")
+    public void userSetsDueDate() {
+        addTaskPage.setDueDate("2 September 2024");
+        addTaskPage.clickDoneBtn();
+    }
 }
