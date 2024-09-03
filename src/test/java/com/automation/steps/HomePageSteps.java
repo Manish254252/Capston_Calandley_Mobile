@@ -87,4 +87,10 @@ public class HomePageSteps {
     public void userClicksOnSeeAllOfMyWork() {
         homePage.clickOnSeeAllOfMyWork();
     }
+
+    @And("user clicks on see all of favorite")
+    public void userClicksOnSeeAllOfFavorite() {
+        homePage.clickOnSeeAllOfFavorite();
+    }
+
 }

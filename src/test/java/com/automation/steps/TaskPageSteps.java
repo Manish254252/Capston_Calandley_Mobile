@@ -33,4 +33,29 @@ public class TaskPageSteps {
     public void verifyTaskIsMarkedAsComplete() {
         Assert.assertTrue(taskPage.isTaskMarkedComplete());
     }
+
+    @When("user clicks on options button")
+    public void userClicksOnOptionsButton() {
+        taskPage.clickOnOptionsBtn();
+    }
+
+    @Then("verify options popup is displayed")
+    public void verifyOptionsPopupIsDisplayed() {
+        Assert.assertTrue(taskPage.isOptionsPopupDisplayed());
+    }
+
+    @When("user clicks on favorite option")
+    public void userClicksOnFavoriteOption() {
+        taskPage.clickOnFavoriteOption();
+    }
+
+    @Then("verify the option is changed to unFavorite")
+    public void verifyTheOptionIsChangedToUnFavorite() {
+        Assert.assertTrue(taskPage.isUnFavoriteOptionDisplayed());
+    }
+
+    @When("user clicks on done button of options popup")
+    public void userClicksOnDoneButtonOfOptionsPopup() {
+        taskPage.clickOnPopupDoneBtn();
+    }
 }

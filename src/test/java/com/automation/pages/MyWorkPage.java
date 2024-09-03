@@ -13,10 +13,16 @@ public class MyWorkPage extends BasePage{
     @FindBy(xpath = "//android.widget.Switch[@content-desc='Overdue']")
     WebElement overdueTaskBtn;
 
-    String overdueTasksXPATH = "//android.widget.Button[contains(@content-desc,'Task: %s')]";
+    String taskNameXPATH = "//android.widget.Button[contains(@content-desc,'Task: %s')]";
 
     @FindBy(xpath = "//android.widget.Button[contains(@content-desc,'Task: ')]")
     List<WebElement> overdueTasksList;
+
+    @FindBy(xpath = "//android.widget.Switch[@content-desc='Done']")
+    WebElement doneTaskBtn;
+
+    @FindBy(xpath = "//android.widget.Button[@content-desc='Back to Home']")
+    WebElement backToHomeBtn;
 
     public boolean isMyWorkPageDisplayed() {
         return nextTaskBtn.isDisplayed() && overdueTaskBtn.isDisplayed();
@@ -28,5 +34,13 @@ public class MyWorkPage extends BasePage{
 
     public boolean isOverdueTaskDisplayed() {
         return overdueTasksList.get(0).isDisplayed();
+    }
+
+    public void clickOnDoneBtn() {
+        doneTaskBtn.click();
+    }
+
+    public void clickOnWorkPageBackBtn() {
+        backToHomeBtn.click();
     }
 }

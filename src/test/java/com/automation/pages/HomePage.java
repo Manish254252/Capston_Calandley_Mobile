@@ -45,6 +45,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//android.widget.Button[@content-desc='See all My Work']")
     WebElement seeAllMyWorkBtn;
 
+    @FindBy(xpath = "//android.widget.Button[@content-desc='See all Favorites']")
+    WebElement seeAllFavoriteBtn;
+
     public void clickAddButton() {
         addIcon.click();
     }
@@ -114,6 +117,16 @@ public class HomePage extends BasePage {
 
     public void clickOnSeeAllOfMyWork() {
         seeAllMyWorkBtn.click();
+    }
+
+    public void clickOnSeeAllOfFavorite() {
+        int height =  driver.manage().window().getSize().getHeight();
+        int width =  driver.manage().window().getSize().getWidth();
+        while (!isPresentWithoutWait(seeAllFavoriteBtn)) {
+            scrollOrSwipe(width/2,height/2,width/2,height/4);
+        }
+        scrollOrSwipe(width/2,height/2,width/2,height/4);
+        seeAllFavoriteBtn.click();
     }
 
 //    public void clickMoreButton() {
