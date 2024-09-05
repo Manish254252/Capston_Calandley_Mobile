@@ -28,9 +28,20 @@ Feature: Complete Next task functionality
     When user clicks on complete task option
     Then verify task is marked as complete
 
+  Scenario: Verify user mark the next task as inProgress
+    When user clicks on see all of my work
+    Then verify my work page is displayed
+    When user clicks on Next button
+    Then verify tasks of name "nextTask.name" displayed
+    When user clicks on the task name as "nextTask.name"
+    Then verify user is on task description page
+    When user clicks on task status type
+    Then verify status types is displayed
+    When user clicks on inProgress task option
+    Then verify task is marked as complete
+
 
   Scenario: Verify user can add a task to favorite
-
     When user clicks on see all of my work
     Then verify my work page is displayed
     When user clicks on done button
