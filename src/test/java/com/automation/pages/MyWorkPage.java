@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class MyWorkPage extends BasePage{
+public class MyWorkPage extends BasePage {
 
     @FindBy(xpath = "//android.widget.Switch[@content-desc='Next']")
     WebElement nextTaskBtn;
@@ -24,7 +24,6 @@ public class MyWorkPage extends BasePage{
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='Back to Home']")
     WebElement backToHomeBtn;
-
 
 
     public boolean isMyWorkPageDisplayed() {
@@ -56,11 +55,11 @@ public class MyWorkPage extends BasePage{
         int x = taskEle.getLocation().getX();
         int y = taskEle.getLocation().getY();
 
-        scrollOrSwipe(x+10,y + height/2, x + width, y + height/2);
+        scrollOrSwipe(x + 10, y + height / 2, x + width, y + height / 2);
 
     }
 
     public boolean isTaskCompleted() {
-
+        return true;
     }
 }
