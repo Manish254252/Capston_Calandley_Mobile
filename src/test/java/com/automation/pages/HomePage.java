@@ -25,7 +25,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//android.view.View[@content-desc='Invite members']")
     WebElement invitePopupHeading;
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc='Invite']")
+    @FindBy(xpath = "//android.widget.Button[@content-desc]")
     WebElement inviteBtn;
 
     @FindBy(xpath = "//android.widget.EditText")
@@ -90,7 +90,7 @@ public class HomePage extends BasePage {
     }
 
     public boolean isInviteSent() {
-        inviteSentMsg = driver.findElement(By.xpath("/hierarchy//android.widget.Toast[contains(@text, 'Invites sent!')]"));
+        inviteSentMsg = driver.findElement(By.xpath("//android.view.View[@content-desc=\"Inviting:\"]"));
         boolean isEle = isElementVisible(inviteSentMsg);
         System.out.println(isEle);
         return isEle;

@@ -1,6 +1,5 @@
 package com.automation.steps;
 
-import com.automation.pages.HomePage;
 import com.automation.pages.SearchPage;
 import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.Given;
@@ -20,7 +19,7 @@ public class searchSteps {
     @When("user clicks on search icon")
     public void user_clicks_on_search_icon() {
         searchPage.clickOnSearchIcon();
-        searchPage.clickOnSearchIcon();
+//        searchPage.clickOnSearchIcon();
     }
 
     @When("user enters task name as {string}")

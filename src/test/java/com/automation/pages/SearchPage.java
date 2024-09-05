@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class SearchPage extends BasePage {
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc='Search\n' +'Tab 4 of 5']")
+    @FindBy(xpath = "(//android.widget.Button[@content-desc])[14]")
     WebElement searchIcon;
 
     @FindBy(xpath = "//android.widget.EditText")
