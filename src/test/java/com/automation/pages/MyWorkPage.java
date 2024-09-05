@@ -19,8 +19,13 @@ public class MyWorkPage extends BasePage {
     @FindBy(xpath = "//android.widget.Button[contains(@content-desc,'Task: ')]")
     List<WebElement> overdueTasksList;
 
+    String nextTaskXPATH = "//android.widget.Button[contains(@content-desc,'%s')]";
+
     @FindBy(xpath = "//android.widget.Switch[@content-desc='Done']")
     WebElement doneTaskBtn;
+
+    @FindBy(xpath = "//android.widget.Switch[@content-desc='Overdue']")
+    WebElement overdueBtn;
 
     @FindBy(xpath = "//android.widget.Button[@content-desc='Back to Home']")
     WebElement backToHomeBtn;
@@ -59,7 +64,30 @@ public class MyWorkPage extends BasePage {
 
     }
 
+    int noOfNextTask = 0;
+
+    public boolean isNextTaskDisplayed(String nextTask) {
+        noOfNextTask = driver.findElements(By.xpath("//android.widget.Button[contains(@content-desc,'Task: ')]")).size();
+        String xpath = String.format(nextTaskXPATH, nextTask);
+        return driver.findElement(By.xpath(xpath)).isDisplayed();
+    }
+
+    public void clickOnNextTask(String nextTask) {
+        String xpath = String.format(nextTaskXPATH, nextTask);
+        System.out.println(xpath);
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void clickOnOverdueBtn() {
+        overdueBtn.click();
+    }
+
     public boolean isTaskCompleted() {
-        return true;
+        int remainingTasks = driver.findElements(By.xpath("//android.widget.Button[contains(@content-desc,'Task: ')]")).size();
+        if(remainingTasks == noOfNextTask -1){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

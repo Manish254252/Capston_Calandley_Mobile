@@ -1,7 +1,6 @@
 package com.automation.steps;
 
 import com.automation.pages.HomePage;
-import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -68,20 +67,20 @@ public class HomePageSteps {
         homePage.clickOnNextBtn();
     }
 
-    @Then("verify tasks of name {string} displayed")
-    public void verifyNextTasksOfNameDisplayed(String nextTask) {
-        Assert.assertTrue("There are no overdue tasks",homePage.isNextTaskDisplayed(ConfigReader.getConfigValue(nextTask)));
-    }
-
-    @When("user clicks on the task name as {string}")
-    public void userClicksOnTheTaskNameAs(String nextTask) {
-        homePage.clickOnNextTask(ConfigReader.getConfigValue(nextTask));
-    }
-
-    @When("user clicks on overdue button")
-    public void userClicksOnOverdueButton() {
-        homePage.clickOnOverdueBtn();
-    }
+//    @Then("verify tasks of name {string} displayed")
+//    public void verifyNextTasksOfNameDisplayed(String nextTask) {
+//        Assert.assertTrue("There are no overdue tasks",homePage.isNextTaskDisplayed(ConfigReader.getConfigValue(nextTask)));
+//    }
+//
+//    @When("user clicks on the task name as {string}")
+//    public void userClicksOnTheTaskNameAs(String nextTask) {
+//        homePage.clickOnNextTask(ConfigReader.getConfigValue(nextTask));
+//    }
+//
+//    @When("user clicks on overdue button")
+//    public void userClicksOnOverdueButton() {
+//        homePage.clickOnOverdueBtn();
+//    }
 
     @When("user clicks on see all of my work")
     public void userClicksOnSeeAllOfMyWork() {

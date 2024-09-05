@@ -31,6 +31,21 @@ public class MyWorkPageSteps {
 
     }
 
+    @Then("verify tasks of name {string} displayed")
+    public void verifyNextTasksOfNameDisplayed(String nextTask) {
+        Assert.assertTrue("There are no overdue tasks",myWorkPage.isNextTaskDisplayed(ConfigReader.getConfigValue(nextTask)));
+    }
+
+    @When("user clicks on the task name as {string}")
+    public void userClicksOnTheTaskNameAs(String nextTask) {
+        myWorkPage.clickOnNextTask(ConfigReader.getConfigValue(nextTask));
+    }
+
+    @When("user clicks on overdue button")
+    public void userClicksOnOverdueButton() {
+        myWorkPage.clickOnOverdueBtn();
+    }
+
     @When("user clicks on done button")
     public void userClicksOnDoneButton() {
         myWorkPage.clickOnDoneBtn();
