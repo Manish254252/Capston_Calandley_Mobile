@@ -52,7 +52,8 @@ public class NotePadPage extends BasePage {
 
     @FindBy(xpath = "(//android.view.View[@content-desc])")
     List<WebElement> noteList;
-    int noteListSize = noteList.size();
+
+    int noteListSize = 0;
 
     public boolean isNotePadPageDisplayed() {
         return createNewNoteTab.isDisplayed();
@@ -104,6 +105,7 @@ public class NotePadPage extends BasePage {
     }
 
     public void clickOnNoteNameFromList(String noteName) {
+        noteListSize = noteList.size();
         String xpath = String.format(noteNameXpath, noteName);
         WebElement noteNameEle = driver.findElement(By.xpath(xpath));
         noteNameEle.click();
@@ -135,8 +137,9 @@ public class NotePadPage extends BasePage {
     }
 
     public boolean isNoteDeletedOfName(String noteName) {
-        String xpath = String.format(NoteXPATH, noteName);
-        WebElement noteElement = driver.findElement(By.xpath(xpath));
-        return !noteElement.isDisplayed();
+//        String xpath = String.format(NoteXPATH, noteName);
+//        WebElement noteElement = driver.findElement(By.xpath(xpath));
+        int presentSize = driver.findElements(By.xpath("(//android.view.View[@content-desc])")).size();
+        return presentSize == noteListSize-1;
     }
 }

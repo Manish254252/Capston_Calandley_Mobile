@@ -1,6 +1,7 @@
 package com.automation.steps;
 
 import com.automation.pages.MyWorkPage;
+import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -38,5 +39,15 @@ public class MyWorkPageSteps {
     @And("clicks on back button of myWork page")
     public void clicksOnBackButtonOfMyWorkPage() {
         myWorkPage.clickOnWorkPageBackBtn();
+    }
+
+    @When("user clicks swipes on task name as {string}")
+    public void userClicksSwipesOnTaskNameAs(String nextTaskName) {
+        myWorkPage.swipeOnTheTaskName(ConfigReader.getConfigValue(nextTaskName));
+    }
+
+    @Then("verify task is completed")
+    public void verifyTaskIsCompleted() {
+        Assert.assertTrue(myWorkPage.isTaskCompleted());
     }
 }

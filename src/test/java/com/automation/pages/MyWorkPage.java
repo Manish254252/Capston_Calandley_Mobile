@@ -1,5 +1,6 @@
 package com.automation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -24,6 +25,8 @@ public class MyWorkPage extends BasePage{
     @FindBy(xpath = "//android.widget.Button[@content-desc='Back to Home']")
     WebElement backToHomeBtn;
 
+
+
     public boolean isMyWorkPageDisplayed() {
         return nextTaskBtn.isDisplayed() && overdueTaskBtn.isDisplayed();
     }
@@ -42,5 +45,22 @@ public class MyWorkPage extends BasePage{
 
     public void clickOnWorkPageBackBtn() {
         backToHomeBtn.click();
+    }
+
+    public void swipeOnTheTaskName(String nextTaskName) {
+        String xpath = String.format(taskNameXPATH, nextTaskName);
+        WebElement taskEle = driver.findElement(By.xpath(xpath));
+
+        int width = taskEle.getSize().getWidth();
+        int height = taskEle.getSize().getHeight();
+        int x = taskEle.getLocation().getX();
+        int y = taskEle.getLocation().getY();
+
+        scrollOrSwipe(x+10,y + height/2, x + width, y + height/2);
+
+    }
+
+    public boolean isTaskCompleted() {
+
     }
 }
