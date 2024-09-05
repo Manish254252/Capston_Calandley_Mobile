@@ -100,24 +100,6 @@ public class HomePage extends BasePage {
         nextTaskBtn.click();
     }
 
-//    int noOfNextTask = 0;
-//
-//    public boolean isNextTaskDisplayed(String nextTask) {
-//        noOfNextTask = driver.findElements(By.xpath("//android.widget.Button[contains(@content-desc,'Task: ')]")).size();
-//        String xpath = String.format(nextTaskXPATH, nextTask);
-//        return driver.findElement(By.xpath(xpath)).isDisplayed();
-//    }
-
-//    public void clickOnNextTask(String nextTask) {
-//        String xpath = String.format(nextTaskXPATH, nextTask);
-//        System.out.println(xpath);
-//        driver.findElement(By.xpath(xpath)).click();
-//    }
-//
-//    public void clickOnOverdueBtn() {
-//        overdueBtn.click();
-//    }
-
     public void clickOnSeeAllOfMyWork() {
         seeAllMyWorkBtn.click();
     }
@@ -132,11 +114,4 @@ public class HomePage extends BasePage {
         seeAllFavoriteBtn.click();
     }
 
-//    public void clickMoreButton() {
-//        moreBtn.click();
-//    }
-//
-//    public void clickOnNotePadOption() {
-//        notePadOption.click();
-//    }
 }
