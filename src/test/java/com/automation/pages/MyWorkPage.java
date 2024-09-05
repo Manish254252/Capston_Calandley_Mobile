@@ -61,6 +61,6 @@ public class MyWorkPage extends BasePage{
     }
 
     public boolean isTaskCompleted() {
-
+        return  true;
     }
 }
