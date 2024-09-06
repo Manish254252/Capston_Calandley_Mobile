@@ -42,6 +42,9 @@ public class TaskPage extends BasePage {
     @FindBy(xpath = "//android.widget.Button[@content-desc='Close']")
     WebElement popupDoneBtn;
 
+    @FindBy(xpath = "//android.widget.Switch[@content-desc='IN PROGRESS']")
+    WebElement inProgressTaskOption;
+
     public boolean isTaskPageDisplayed() {
         return detailsTab.isDisplayed() && activityTab.isDisplayed();
     }
@@ -81,5 +84,17 @@ public class TaskPage extends BasePage {
 
     public void clickOnPopupDoneBtn() {
         popupDoneBtn.click();
+    }
+
+    public void clickOnInProgressTaskOption() {
+        inProgressTaskOption.click();
+    }
+
+    public void clickOnUnFavoriteOption() {
+        unFavoriteOption.click();
+    }
+
+    public boolean isFavoriteOptionDisplayed() {
+        return favoriteOption.isDisplayed();
     }
 }

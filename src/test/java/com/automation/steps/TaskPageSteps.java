@@ -58,4 +58,19 @@ public class TaskPageSteps {
     public void userClicksOnDoneButtonOfOptionsPopup() {
         taskPage.clickOnPopupDoneBtn();
     }
+
+    @When("user clicks on inProgress task option")
+    public void userClicksOnInProgressTaskOption() {
+        taskPage.clickOnInProgressTaskOption();
+    }
+
+    @When("user clicks on unFavorite option")
+    public void userClicksOnUnFavoriteOption() {
+        taskPage.clickOnUnFavoriteOption();
+    }
+
+    @Then("verify the option is changed to favorite")
+    public void verifyTheOptionIsChangedToFavorite() {
+        Assert.assertTrue(taskPage.isFavoriteOptionDisplayed());
+    }
 }
